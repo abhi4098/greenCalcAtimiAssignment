@@ -27,7 +27,7 @@ export default class App extends Component {
     super()
     this.state = {
       resultText: '',
-      calculationText: ''
+      calculationText: '0'
     }
     this.operations = ['+', '/', '-', '*']
   }
@@ -80,6 +80,13 @@ export default class App extends Component {
       this.setState({
         resultText: updateText.join('')
       })
+
+      if(this.state.resultText == '')
+      {
+        this.setState({
+          calculationText: '0'
+        })
+      }
     }
 
   }
@@ -95,7 +102,7 @@ export default class App extends Component {
           current = '-';
         }
         else {
-          calculation.push(parseFloat(current), ch);
+          calculation.push(parseInt(current), ch);
           current = '';
         }
       } else {
@@ -103,7 +110,7 @@ export default class App extends Component {
       }
     }
     if (current != '')
-      calculation.push(parseFloat(current));
+      calculation.push(parseInt(current));
 
     return calculation;
   }
