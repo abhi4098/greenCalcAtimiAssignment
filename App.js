@@ -20,6 +20,7 @@ import {
 
 
 
+
 export default class App extends Component {
 
   constructor() {
@@ -33,6 +34,7 @@ export default class App extends Component {
 
 
   operationsClicked(operations) {
+
     switch (operations) {
 
       case '+':
@@ -42,12 +44,13 @@ export default class App extends Component {
       case '-':
 
       case '*':
+
         const lastChar = this.state.resultText.split('').pop();
 
         if (this.operations.indexOf(lastChar) > -1) return;
 
 
-        if (this.state.text == '') return;
+        if (this.state.resultText == '') return;
         this.setState({
           resultText: this.state.resultText + operations
         })
@@ -66,7 +69,7 @@ export default class App extends Component {
       return this.calculateResult();
 
 
-    if (this.state.text == '') return;
+
     this.setState({
       resultText: this.state.resultText + text
     })
