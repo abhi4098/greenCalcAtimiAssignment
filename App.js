@@ -81,7 +81,7 @@ export default class App extends Component {
         resultText: updateText.join('')
       })
 
-      if(this.state.resultText == '')
+      if(this.state.resultText.length == 1)
       {
         this.setState({
           calculationText: '0'
