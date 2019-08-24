@@ -21,6 +21,7 @@ import {
 
 
 
+
 export default class App extends Component {
 
   constructor() {
@@ -81,8 +82,7 @@ export default class App extends Component {
         resultText: updateText.join('')
       })
 
-      if(this.state.resultText.length == 1)
-      {
+      if (this.state.resultText.length == 1) {
         this.setState({
           calculationText: '0'
         })
@@ -111,7 +111,7 @@ export default class App extends Component {
     }
     if (current != '')
       calculation.push(parseInt(current));
-
+    console.log("calculations.......................", calculation);
     return calculation;
   }
 
@@ -132,23 +132,30 @@ export default class App extends Component {
       currentOp;
     for (var i = 0; i < ops.length; i++) {
       for (var j = 0; j < calc.length; j++) {
+       
         if (ops[i][calc[j]]) {
           currentOp = ops[i][calc[j]];
+         
         } else if (currentOp) {
           newCalc[newCalc.length - 1] =
             currentOp(newCalc[newCalc.length - 1], calc[j]);
+            console.log("else if ..........................................", newCalc)
           currentOp = null;
         } else {
           newCalc.push(calc[j]);
+          console.log("else..........................................", newCalc)
+          
         }
       }
       calc = newCalc;
+      //console.log("currentOp..........................................", calc)
       newCalc = [];
     }
     if (calc.length > 1) {
-
+     // console.log("newcalc length>1..........................................", calc)
       return calc;
     } else {
+     // console.log("newcalc ..........................................", calc[0])
       return calc[0];
     }
   }
