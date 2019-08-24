@@ -55,12 +55,6 @@ jobs:
       - attach_workspace:
           at: ~/demo-react-native
 
-      - run:
-          name: fastlane tests
-          command: |
-            mkdir -p test-results/fastlane
-            bundle exec fastlane test
-            mv fastlane/report.xml test-results/fastlane
       - store_test_results:
           path: test-results
 
